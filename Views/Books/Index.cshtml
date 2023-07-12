@@ -1,0 +1,33 @@
+﻿@model List<Book>
+
+<h2>Список книг</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["AuthorSortParam"]">Автор</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParam"]">Название</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["YearSortParam"]">Год издания</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Author</td>
+                <td>@book.Title</td>
+                <td>@book.Year</td>
+                <td>
+                    <a asp-action="Buy" asp-route-id="@book.Id">Купить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
