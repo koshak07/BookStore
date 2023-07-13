@@ -1,11 +1,12 @@
-﻿using BookStore.Models;
+﻿using ApplicationForTest.Data;
+using BookStore.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace BookStore.Data
 {
-    public class BookContext : DbContext
+    public class BookContext : DbContext, IBookContext
     {
         public BookContext(DbContextOptions<BookContext> options) : base(options)
         {

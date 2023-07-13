@@ -1,3 +1,4 @@
+using ApplicationForTest.Data;
 using BookStore.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,9 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<BookContext>(options =>
                 options.UseSqlServer(connectionString));
+builder.Services.AddTransient<IBookContext, BookContext>();
+
+
 
 var app = builder.Build();
 

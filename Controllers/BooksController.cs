@@ -20,7 +20,7 @@ namespace BookStore.Controllers
 
             var books = from b in _context.Books
                         select b;
-
+            //sort
             switch (sortOrder)
             {
                 case "author_desc":
@@ -46,24 +46,25 @@ namespace BookStore.Controllers
             return View(books.ToList());
         }
 
-        public IActionResult Buy(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        // не требуется по тз
+        //public IActionResult Buy(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var book = _context.Books.Find(id);
+        //    var book = _context.Books.Find(id);
 
-            if (book == null)
-            {
-                return NotFound();
-            }
+        //    if (book == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Books.Remove(book);
-            _context.SaveChanges();
+        //    _context.Books.Remove(book);
+        //    _context.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

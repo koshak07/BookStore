@@ -17,17 +17,32 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody >
         @foreach (var book in Model)
         {
-            <tr>
-                <td>@book.Author</td>
-                <td>@book.Title</td>
-                <td>@book.Year</td>
-                <td>
-                    <a asp-action="Buy" asp-route-id="@book.Id">Купить</a>
+
+            <tr id="parent" class="element">
+                <td >@book.Author</td>
+                <td >@book.Title</td>
+                <td >@book.Year</td>
+                <td >
+                    <button id="hideButton" class="hideButton content_toggle" asp-route-id="@book.Id">Купить</button>
                 </td>
             </tr>
+               
+                
+            
+            
         }
     </tbody>
 </table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".hideButton").on("click", function () {
+            // Находим родительскую строку (tr) и скрываем ее
+            $(this).closest("tr").hide();
+        });
+    });
+</script>
